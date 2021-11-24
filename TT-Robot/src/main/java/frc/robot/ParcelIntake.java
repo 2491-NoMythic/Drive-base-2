@@ -15,10 +15,11 @@ public class ParcelIntake extends TimedRobot {
     CANSparkMax motor;
 
     public ParcelIntake(){
+        //use talon srx
     motor = new CANSparkMax(Constants.ParcelIntake_ID, MotorType.kBrushless);
     }
 
-    public void teleopPeriodic()
+    public void ParcelIntakeRun()
     {
     
         if(Robot.PS4.getRawButtonPressed(Constants.PS4.parcelIntakeID)){
