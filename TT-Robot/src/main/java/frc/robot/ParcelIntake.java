@@ -1,15 +1,9 @@
 package frc.robot;
 
-import javax.lang.model.util.ElementScanner6;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController.Button;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 public class ParcelIntake extends TimedRobot {
     CANSparkMax motor;

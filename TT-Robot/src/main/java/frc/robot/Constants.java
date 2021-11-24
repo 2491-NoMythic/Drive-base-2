@@ -1,7 +1,5 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
-
 public final class Constants {
    // public static final int ParcelIntake_ID = 2491;
 	public static final double ParcelIntakeSpeed = 2491;
