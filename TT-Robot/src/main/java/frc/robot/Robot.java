@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
 
     super.robotInit();
 
-    m_parcelIntake = new ParcelIntake();
+    m_parcelIntake = ParcelIntake.getInstance();
 
     driveLeftMotor1 = new WPI_TalonFX(Constants.RightMotor_ID);
     driveRightMotor1 = new WPI_TalonFX(Constants.LeftMotor_ID);
@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
     // Drive with arcade drive.
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
-    m_parcelIntake.ParcelIntakeRun();
+    m_parcelIntake.RunIntake();
 
     m_robotDrive.curvatureDrive(m_stick.getY(), m_stick.getX(), false);
   }

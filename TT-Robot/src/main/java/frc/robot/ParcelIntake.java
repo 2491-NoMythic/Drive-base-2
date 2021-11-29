@@ -1,12 +1,11 @@
 package frc.robot;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 
 public class ParcelIntake extends TimedRobot {
-    CANSparkMax motor;
+    WPI_TalonSRX motor;
     private static ParcelIntake instance = null; 
 
     public static ParcelIntake getInstance()
@@ -20,7 +19,7 @@ public class ParcelIntake extends TimedRobot {
 
     private ParcelIntake(){
         //use talon srx
-    motor = new CANSparkMax(Constants.ParcelIntake_ID, MotorType.kBrushless);
+        motor = new WPI_TalonSRX(Constants.ParcelIntake_ID);
     }
 
     public void RunIntake() // fix 
