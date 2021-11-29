@@ -19,18 +19,18 @@ public class ParcelIntake extends TimedRobot {
 
     private ParcelIntake(){
         //use talon srx
-        motor = new WPI_TalonSRX(Constants.ParcelIntake_ID);
+        motor = new WPI_TalonSRX(Constants.m_ParcelIntake.ParcelIntake_ID);
     }
 
     public void RunIntake() // fix 
     {
     
         if(Robot.PS4.getRawButtonPressed(Constants.PS4.parcelIntakeID)){
-            rotateMotor(Constants.ParcelIntakeSpeed);
+            rotateMotor(Constants.m_ParcelIntake.ParcelIntakeSpeed);
         } 
         else if (Robot.PS4.getRawButton(Constants.PS4.ParcelOuttakeID))
         {
-            rotateMotor(Constants.ParcelOuttakeSpeed);
+            rotateMotor(Constants.m_ParcelIntake.ParcelOuttakeSpeed);
         }
         else
         {

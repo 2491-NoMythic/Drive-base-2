@@ -22,6 +22,7 @@ public class Robot extends TimedRobot {
  // private SpeedControllerGroup left = new SpeedControllerGroup(driveLeftMotor1);
 
   private ParcelIntake m_parcelIntake;
+  private CarrierIntake m_CarrierIntake;
 
  private DifferentialDrive m_robotDrive;
   
@@ -34,9 +35,10 @@ public class Robot extends TimedRobot {
     super.robotInit();
 
     m_parcelIntake = ParcelIntake.getInstance();
+    m_CarrierIntake = CarrierIntake.getInstance();
 
-    driveLeftMotor1 = new WPI_TalonFX(Constants.RightMotor_ID);
-    driveRightMotor1 = new WPI_TalonFX(Constants.LeftMotor_ID);
+    driveLeftMotor1 = new WPI_TalonFX(Constants.DriveTrain.RightMotor_ID);
+    driveRightMotor1 = new WPI_TalonFX(Constants.DriveTrain.LeftMotor_ID);
 
     m_robotDrive = new DifferentialDrive(driveLeftMotor1, driveRightMotor1);
 
@@ -49,6 +51,7 @@ public class Robot extends TimedRobot {
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
     m_parcelIntake.RunIntake();
+    m_CarrierIntake.RunIntake();
 
     m_robotDrive.curvatureDrive(m_stick.getY(), m_stick.getX(), false);
   }
