@@ -20,18 +20,18 @@ public class CarrierIntake extends TimedRobot {
 
     private CarrierIntake(){
   
-        motor = new CANSparkMax(Constants.m_CarrierIntake.CarrierIntake_ID, MotorType.kBrushless);
+        motor = new CANSparkMax(Constants.CarrierIntake.CarrierIntake_ID, MotorType.kBrushed);
     }
 
     public void RunIntake() // fix 
     {
     
         if(Robot.PS4.getRawButtonPressed(Constants.PS4.CarrierIntakeID)){
-            rotateMotor(Constants.m_CarrierIntake.CarrierIntakeSpeed);
+            rotateMotor(Constants.CarrierIntake.CarrierIntakeSpeed);
         } 
         else if (Robot.PS4.getRawButton(Constants.PS4.CarrierIntakeID))
         {
-            rotateMotor(Constants.m_CarrierIntake.CarrierOutttakeSpeed);
+            rotateMotor(Constants.CarrierIntake.CarrierOutttakeSpeed);
         }
         else
         {
@@ -43,6 +43,7 @@ public class CarrierIntake extends TimedRobot {
     {
         motor.set(speed);
     }
+
 
     public void stopMotor() {
         motor.set(0);

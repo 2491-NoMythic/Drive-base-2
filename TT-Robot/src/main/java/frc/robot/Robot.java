@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.InvertType;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -22,12 +24,12 @@ public class Robot extends TimedRobot {
  // private SpeedControllerGroup left = new SpeedControllerGroup(driveLeftMotor1);
 
   private ParcelIntake m_parcelIntake;
-  private CarrierIntake m_CarrierIntake;
+ // private CarrierIntake m_CarrierIntake;
 
  private DifferentialDrive m_robotDrive;
   
-  public final static Joystick PS4 = new Joystick(2491);
-  private final Joystick m_stick = new Joystick(2491);
+  public final static Joystick PS4 = new Joystick(0);
+  private final Joystick m_stick = new Joystick(0);
 
   @Override
   public void robotInit() {
@@ -35,13 +37,18 @@ public class Robot extends TimedRobot {
     super.robotInit();
 
     m_parcelIntake = ParcelIntake.getInstance();
-    m_CarrierIntake = CarrierIntake.getInstance();
+  //  m_CarrierIntake = CarrierIntake.getInstance();
 
     driveLeftMotor1 = new WPI_TalonFX(Constants.DriveTrain.RightMotor_ID);
     driveRightMotor1 = new WPI_TalonFX(Constants.DriveTrain.LeftMotor_ID);
+    driveRightMotor1.setNeutralMode(NeutralMode.Brake);
+    driveLeftMotor1.setNeutralMode(NeutralMode.Brake);
+
+    driveRightMotor1.setInverted(InvertType.InvertMotorOutput);
 
     m_robotDrive = new DifferentialDrive(driveLeftMotor1, driveRightMotor1);
-
+    m_robotDrive.setDeadband(0.04);
+    m_robotDrive.setRightSideInverted(false);
     
   }
 
@@ -51,8 +58,8 @@ public class Robot extends TimedRobot {
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
     m_parcelIntake.RunIntake();
-    m_CarrierIntake.RunIntake();
+    //m_CarrierIntake.RunIntake();
 
-    m_robotDrive.curvatureDrive(m_stick.getY(), m_stick.getX(), false);
+    m_robotDrive.curvatureDrive(m_stick.getY(), m_stick.getZ(), m_stick.getRawButton(1));
   }
 }
