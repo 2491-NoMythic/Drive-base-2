@@ -41,8 +41,6 @@ public class Robot extends TimedRobot {
 
     driveLeftMotor1 = new WPI_TalonFX(Constants.DriveTrain.RightMotor_ID);
     driveRightMotor1 = new WPI_TalonFX(Constants.DriveTrain.LeftMotor_ID);
-    driveRightMotor1.setNeutralMode(NeutralMode.Brake);
-    driveLeftMotor1.setNeutralMode(NeutralMode.Brake);
 
     driveRightMotor1.setInverted(InvertType.InvertMotorOutput);
 
@@ -50,6 +48,14 @@ public class Robot extends TimedRobot {
     m_robotDrive.setDeadband(0.04);
     m_robotDrive.setRightSideInverted(false);
     
+  }
+
+  @Override
+  public void teleopInit() {
+    // TODO Auto-generated method stub
+    super.teleopInit();
+    driveRightMotor1.setNeutralMode(NeutralMode.Brake);
+    driveLeftMotor1.setNeutralMode(NeutralMode.Brake);
   }
 
   @Override
@@ -61,5 +67,13 @@ public class Robot extends TimedRobot {
     //m_CarrierIntake.RunIntake();
 
     m_robotDrive.curvatureDrive(m_stick.getY(), m_stick.getZ(), m_stick.getRawButton(1));
+  }
+
+  @Override
+  public void disabledInit() {
+    // TODO Auto-generated method stub
+    super.disabledInit();
+    driveRightMotor1.setNeutralMode(NeutralMode.Coast);
+    driveLeftMotor1.setNeutralMode(NeutralMode.Coast);
   }
 }

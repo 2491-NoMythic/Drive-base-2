@@ -12,15 +12,15 @@ public final class Constants {
     }
 
     public final class CarrierIntake{
-        public static final double CarrierIntakeSpeed = 2491;
-        public static final double CarrierOutttakeSpeed = 2491; 
-        public static final int CarrierIntake_ID = 4;
+        public static final double IntakeSpeed = 2491;
+        public static final double OutttakeSpeed = 2491; 
+        public static final int MotorID = 4;
     }
 
-    public final class m_ParcelIntake{
-        public static final double ParcelIntakeSpeed = 2491;
-        public static final double ParcelOuttakeSpeed = 2491;
-        public static final int ParcelIntake_ID = 2491;
+    public final class ParcelIntake{
+        public static final double IntakeSpeed = 2491;
+        public static final double OuttakeSpeed = 2491;
+        public static final int Intake_ID = 2491;
     }
 
     public final class DriveTrain{
