@@ -8,6 +8,10 @@ public final class Constants {
         public static final int ParcelOuttakeID = 0; 
 
         public static final int CarrierIntakeID = 0;
+        public static final int CarrierOuttatkeID = 0;
+
+        public static final int ElevatorUpID = 0;
+        public static final int ElevatorDownID = 0;
      //   public static final int CarrierOutttakeSpeedID= 2491; 
     }
 
@@ -27,4 +31,10 @@ public final class Constants {
         public static final int RightMotor_ID = 4;
         public static final int LeftMotor_ID = 5;
     }
+
+    public final class Elevator{
+        public static final int Motor_ID = 2491;
+        public static final double UpSpeed = 2491;
+        public static final double DownSpeed = 2491;
+      }
 }

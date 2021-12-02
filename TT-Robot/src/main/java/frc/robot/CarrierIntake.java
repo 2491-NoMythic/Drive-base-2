@@ -29,7 +29,7 @@ public class CarrierIntake extends TimedRobot {
         if(Robot.PS4.getRawButtonPressed(Constants.PS4.CarrierIntakeID)){
             rotateMotor(Constants.CarrierIntake.IntakeSpeed);
         } 
-        else if (Robot.PS4.getRawButton(Constants.PS4.CarrierIntakeID))
+        else if (Robot.PS4.getRawButton(Constants.PS4.CarrierOuttatkeID))
         {
             rotateMotor(Constants.CarrierIntake.OutttakeSpeed);
         }
