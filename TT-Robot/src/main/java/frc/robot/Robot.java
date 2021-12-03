@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  * This is a demo program showing the use of the DifferentialDrive class. Runs the motors with
  * arcade steering.
@@ -29,7 +31,7 @@ public class Robot extends TimedRobot {
 
  private DifferentialDrive m_robotDrive;
   
-  public final static Joystick PS4 = new Joystick(0);
+  public final static Joystick PS4 = new Joystick(1);
   private final Joystick m_stick = new Joystick(0);
 
   @Override
@@ -39,6 +41,7 @@ public class Robot extends TimedRobot {
 
     m_parcelIntake = ParcelIntake.getInstance();
     m_Elevator = Elevator.getInstance();
+    
   //  m_CarrierIntake = CarrierIntake.getInstance();
 
     driveLeftMotor1 = new WPI_TalonFX(Constants.DriveTrain.RightMotor_ID);
@@ -65,12 +68,13 @@ public class Robot extends TimedRobot {
     // Drive with arcade drive.
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
-
-    m_parcelIntake.RunIntake();
-    m_Elevator.RunIntake();
+    double m_SpeedManager = (m_stick.getRawAxis(3)+1)/2;
+    m_parcelIntake.runIntake();
+    m_Elevator.runElevator();
     //m_CarrierIntake.RunIntake();
+    SmartDashboard.putNumber("Slider", m_SpeedManager);
 
-    m_robotDrive.curvatureDrive(m_stick.getY(), m_stick.getZ(), m_stick.getRawButton(1));
+    m_robotDrive.curvatureDrive(m_stick.getY()*m_SpeedManager, m_stick.getZ()*m_SpeedManager, m_stick.getRawButton(1));
   }
 
   @Override
