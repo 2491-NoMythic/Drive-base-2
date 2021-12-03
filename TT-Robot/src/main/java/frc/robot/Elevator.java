@@ -47,20 +47,67 @@ public class Elevator extends TimedRobot {
         {
             stopMotor();
         }
-
+        //Ground
         if(Robot.PS4.getRawButtonPressed(Constants.PS4.ElevatorGroundID)){
-
-            if(motor.getSelectedSensorPosition() <= Constants.Elevator.ground){
-                //Go up to ground from the depths
-            }
-            else{
-                //Go down to ground from the other 3
-            }
-
+                while (motor.getSelectedSensorPosition() <= Constants.Elevator.ground)
+                {
+                    rotateMotor(Constants.Elevator.UpSpeed);
+                    //move up to ground
+                }
+                while (motor.getSelectedSensorPosition() >= Constants.Elevator.ground)
+                {
+                    rotateMotor(Constants.Elevator.DownSpeed);
+                    //move down to ground.
+                }
         }
+        //DRIVE
 
+         if(Robot.PS4.getRawButtonPressed(Constants.PS4.ElevatorDriveID)){
+                while (motor.getSelectedSensorPosition() <= Constants.Elevator.drive)
+                {
+                    rotateMotor(Constants.Elevator.UpSpeed);
+                    //move up to drive
+                }
+                while (motor.getSelectedSensorPosition() >= Constants.Elevator.drive)
+                {
+                    rotateMotor(Constants.Elevator.DownSpeed);
+                    //move down to drive
+                }
+            }
 
+        //LOW
+
+            if(Robot.PS4.getRawButtonPressed(Constants.PS4.ElevatorLowShelfID)){
+                while (motor.getSelectedSensorPosition() <= Constants.Elevator.low_shelf)
+                {
+                    rotateMotor(Constants.Elevator.UpSpeed);
+                    //move up to drive
+                    }
+                while (motor.getSelectedSensorPosition() >= Constants.Elevator.low_shelf)
+                {
+                    rotateMotor(Constants.Elevator.DownSpeed);
+                    //move down to drive
+                }
+            }
+
+            //HIGH
+            if(Robot.PS4.getRawButtonPressed(Constants.PS4.ElevatorHighShelfID)){
+                while (motor.getSelectedSensorPosition() <= Constants.Elevator.high_shelf)
+                {
+                    rotateMotor(Constants.Elevator.UpSpeed);
+                    //move up to drive
+                }
+                while (motor.getSelectedSensorPosition() >= Constants.Elevator.high_shelf)
+                {
+                    rotateMotor(Constants.Elevator.DownSpeed);
+                  //move down to drive
+                }
+            }
+        
     }
+        
+
+
 
     public void rotateMotor(double speed)
     {
