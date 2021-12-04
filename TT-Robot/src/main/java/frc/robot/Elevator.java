@@ -47,6 +47,8 @@ public class Elevator extends TimedRobot {
         {
             stopMotor();
         }
+
+        
         //Ground
         if(Robot.PS4.getRawButtonPressed(Constants.PS4.ElevatorGroundID)){
                 while (motor.getSelectedSensorPosition() <= Constants.Elevator.ground)
