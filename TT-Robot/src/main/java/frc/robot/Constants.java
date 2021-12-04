@@ -5,25 +5,27 @@ public final class Constants {
 
     public final class PS4{        
         public static final int parcelIntakeID = 6;
-        public static final int parcelOuttakeID = 5; 
+        public static final int parcelOuttakeID = 8; 
 
-        public static final int CarrierIntakeID = 8;
+        public static final int CarrierIntakeID = 5;
         public static final int CarrierOuttakeID = 7;
 
         public static final int ElevatorUpID = 4;
         public static final int ElevatorDownID = 2;
 
-        public static final int ElevatorGroundID = 0;
-        public static final int ElevatorDriveID = 0;
-        public static final int ElevatorLowShelfID = 0;
-        public static final int ElevatorHighShelfID = 0;
+        public static final int ElevatorGroundID = 1;
+        public static final int ElevatorDriveID = 1;
+        public static final int ElevatorLowShelfID = 1;
+        public static final int ElevatorHighShelfID = 1;
      //   public static final int CarrierOutttakeSpeedID= 2491; 
     }
 
     public final class CarrierIntake{
         public static final double IntakeSpeed = 0.5;
         public static final double OuttakeSpeed = -0.5; 
-        public static final int MotorID = 2491;
+        public static final int RightMotorID = 4;
+        public static final int LeftMotorID = 8;
+
     }
 
     public final class ParcelIntake{

@@ -4,9 +4,10 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class CarrierIntake extends TimedRobot {
-    CANSparkMax motor;
+    CANSparkMax rightMotor, leftMotor;
     private static CarrierIntake instance = null; 
 
     public static CarrierIntake getInstance()
@@ -20,16 +21,20 @@ public class CarrierIntake extends TimedRobot {
 
     private CarrierIntake(){
   
-        motor = new CANSparkMax(Constants.CarrierIntake.MotorID, MotorType.kBrushed);
+        rightMotor = new CANSparkMax(Constants.CarrierIntake.RightMotorID, MotorType.kBrushless);
+        leftMotor = new CANSparkMax(Constants.CarrierIntake.LeftMotorID, MotorType.kBrushless);
+        leftMotor.follow(rightMotor, true);
     }
 
     public void RunIntake() // fix 
     {
-    
+        SmartDashboard.putNumber("Right carrier motor output current", rightMotor.getOutputCurrent());
+        SmartDashboard.putNumber("left carrier motor output current", leftMotor.getOutputCurrent());
+        
         if(Robot.PS4.getRawButtonPressed(Constants.PS4.CarrierIntakeID)){
             //up
             rotateMotor(Constants.CarrierIntake.IntakeSpeed);
-        } 
+        }
         else if (Robot.PS4.getRawButtonPressed(Constants.PS4.CarrierOuttakeID))
         {
             //down
@@ -43,11 +48,11 @@ public class CarrierIntake extends TimedRobot {
 
     public void rotateMotor(double speed)
     {
-        motor.set(speed);
+        rightMotor.set(speed);
     }
 
 
     public void stopMotor() {
-        motor.set(0);
+        rightMotor.set(0);
       }
 }

@@ -27,7 +27,7 @@ public class Robot extends TimedRobot {
 
   private ParcelIntake m_parcelIntake;
   private Elevator m_Elevator;
- // private CarrierIntake m_CarrierIntake;
+  private CarrierIntake m_CarrierIntake;
 
  private DifferentialDrive m_robotDrive;
   
@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
     m_parcelIntake = ParcelIntake.getInstance();
     m_Elevator = Elevator.getInstance();
     
-  //  m_CarrierIntake = CarrierIntake.getInstance();
+    m_CarrierIntake = CarrierIntake.getInstance();
 
     driveLeftMotor1 = new WPI_TalonFX(Constants.DriveTrain.RightMotor_ID);
     driveRightMotor1 = new WPI_TalonFX(Constants.DriveTrain.LeftMotor_ID);
@@ -68,10 +68,11 @@ public class Robot extends TimedRobot {
     // Drive with arcade drive.
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
-    double m_SpeedManager = (m_stick.getRawAxis(3)+1)/2;
+    double m_SpeedManager = 1-(m_stick.getRawAxis(3)+1)/+2;
     m_parcelIntake.runIntake();
     m_Elevator.runElevator();
-    //m_CarrierIntake.RunIntake();
+    m_CarrierIntake.RunIntake();
+
     SmartDashboard.putNumber("Slider", m_SpeedManager);
 
     m_robotDrive.curvatureDrive(m_stick.getY()*m_SpeedManager, m_stick.getZ()*m_SpeedManager, m_stick.getRawButton(1));
