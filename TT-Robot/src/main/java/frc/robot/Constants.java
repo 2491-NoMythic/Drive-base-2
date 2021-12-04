@@ -10,8 +10,8 @@ public final class Constants {
         public static final int CarrierIntakeID = 5;
         public static final int CarrierOuttakeID = 7;
 
-        public static final int ElevatorUpID = 4;
-        public static final int ElevatorDownID = 2;
+        public static final int ElevatorUpID = 2;
+        public static final int ElevatorDownID = 4;
 
         public static final int ElevatorGroundID = 1;
         public static final int ElevatorDriveID = 1;
