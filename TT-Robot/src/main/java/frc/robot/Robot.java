@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   private ParcelIntake m_parcelIntake;
   private Elevator m_Elevator;
   private CarrierIntake m_CarrierIntake;
+  private double startTime;
 
  private DifferentialDrive m_robotDrive;
   
@@ -49,6 +50,9 @@ public class Robot extends TimedRobot {
     driveLeftMotor1 = new WPI_TalonFX(Constants.DriveTrain.RightMotor_ID);
     driveRightMotor1 = new WPI_TalonFX(Constants.DriveTrain.LeftMotor_ID);
 
+    driveRightMotor1.setNeutralMode(NeutralMode.Brake);
+    driveLeftMotor1.setNeutralMode(NeutralMode.Brake);
+
     driveRightMotor1.setInverted(InvertType.InvertMotorOutput);
 
     m_robotDrive = new DifferentialDrive(driveLeftMotor1, driveRightMotor1);
@@ -57,12 +61,44 @@ public class Robot extends TimedRobot {
     
   }
 
+  public void autonomousInit()
+  {
+    super.autonomousInit();
+  startTime = Timer.getFPGATimestamp();
+  }
+
+  //Auto start
+   @Override
+   public void autonomousPeriodic(){
+
+    double time = Timer.getFPGATimestamp();
+
+    SmartDashboard.putNumber("time", time);
+
+     if (time - startTime < 2)
+      {
+       driveLeftMotor1.set(.25);
+       driveRightMotor1.set(.25);
+       CarrierIntake.rotateMotor(-.05);
+       SmartDashboard.putString("autos", "go");
+
+      }
+    
+    
+
+    //if (m_Elevator.motor.getSelectedSensorPosition() <= Constants.Elevator.high_shelf)
+      //{
+        // m_Elevator.rotateMotor(Constants.Elevator.UpSpeed);
+    //  }
+   }
+
+  //Auto End
+
   @Override
   public void teleopInit() {
     // TODO Auto-generated method stub
     super.teleopInit();
-    driveRightMotor1.setNeutralMode(NeutralMode.Brake);
-    driveLeftMotor1.setNeutralMode(NeutralMode.Brake);
+
   }
 
   @Override
@@ -75,21 +111,20 @@ public class Robot extends TimedRobot {
     m_Elevator.runElevator();
     m_CarrierIntake.RunIntake();
 
+  if (m_stick.getRawButtonPressed(1))
+  {
+    m_SpeedManager = m_SpeedManager/2;
+  }
+  else if (m_stick.getRawButtonReleased(1))
+  {
+    m_SpeedManager = m_SpeedManager*2;
+  }
     SmartDashboard.putNumber("Slider", m_SpeedManager);
 
     m_robotDrive.curvatureDrive(m_stick.getY()*m_SpeedManager, m_stick.getZ()*m_SpeedManager, m_stick.getRawButton(1));
   }
 
-    public void autonomousPeriodic()
-    {
-      double time  = Timer.getFPGATimestamp();
 
-      if(time < 3)
-      {
-
-        m_robotDrive.tankDrive(.5, .5);
-      }
-    }
   @Override
   public void disabledInit() {
     // TODO Auto-generated method stub

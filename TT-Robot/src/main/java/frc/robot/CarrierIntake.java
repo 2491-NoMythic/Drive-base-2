@@ -7,7 +7,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class CarrierIntake extends TimedRobot {
-    CANSparkMax rightMotor, leftMotor;
+    static CANSparkMax rightMotor;
+    CANSparkMax leftMotor;
     private static CarrierIntake instance = null; 
 
     public static CarrierIntake getInstance()
@@ -42,11 +43,11 @@ public class CarrierIntake extends TimedRobot {
         }
         else if (Robot.PS4.getRawButtonReleased(Constants.PS4.CarrierIntakeID) || (Robot.PS4.getRawButtonReleased(Constants.PS4.CarrierOuttakeID)))
         {
-            stopMotor();
+            rotateMotor(Constants.CarrierIntake.ConstantIntakeSpeed);
         }
     }
 
-    public void rotateMotor(double speed)
+    public static void rotateMotor(double speed)
     {
         rightMotor.set(speed);
     }

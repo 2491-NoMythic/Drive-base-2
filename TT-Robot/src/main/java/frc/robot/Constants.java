@@ -4,8 +4,8 @@ public final class Constants {
    // public static final int ParcelIntake_ID = 2491;
 
     public final class PS4{        
-        public static final int parcelIntakeID = 6;
-        public static final int parcelOuttakeID = 8; 
+        public static final int parcelIntakeID = 8;
+        public static final int parcelOuttakeID = 6; 
 
         public static final int CarrierIntakeID = 5;
         public static final int CarrierOuttakeID = 7;
@@ -21,10 +21,11 @@ public final class Constants {
     }
 
     public final class CarrierIntake{
-        public static final double IntakeSpeed = 0.5;
-        public static final double OuttakeSpeed = -0.5; 
+        public static final double IntakeSpeed = 0.2;
+        public static final double OuttakeSpeed = -0.2; 
         public static final int RightMotorID = 4;
         public static final int LeftMotorID = 8;
+        public static final double ConstantIntakeSpeed = -.05;
 
     }
 
